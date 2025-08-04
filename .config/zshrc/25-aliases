@@ -10,13 +10,15 @@ alias lt='eza -a --tree --level=1 --icons=always'
 alias shutdown='systemctl poweroff'
 alias v='$EDITOR'
 alias vim='$EDITOR'
-alias ts='~/.config/ml4w/scripts/arch/snapshot.sh'
+alias ts='~/.config/juan/scripts/arch/snapshot.sh'
 alias wifi='nmtui'
-alias cleanup='~/.config/ml4w/scripts/arch/cleanup.sh'
+alias cleanup='~/.config/juan/scripts/arch/cleanup.sh'
 
 
 alias Qtile='startx'
 alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
+
+alias ascii='~/.config/juan/scripts/figlet.sh'
 
 alias res1='xrandr --output DisplayPort-0 --mode 2560x1440 --rate 120'
 alias res2='xrandr --output DisplayPort-0 --mode 1920x1080 --rate 120'

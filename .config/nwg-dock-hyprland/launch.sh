@@ -6,7 +6,7 @@
 
 
 config="$HOME/.config/gtk-3.0/settings.ini"
-if [ ! -f $HOME/.config/ml4w/settings/dock-disabled ]; then
+if [ ! -f $HOME/.config/juan/settings/dock-disabled ]; then
     killall nwg-dock-hyprland
     sleep 0.5
     prefer_dark_theme="$(grep 'gtk-application-prefer-dark-theme' "$config" | sed 's/.*\s*=\s*//')"

@@ -54,13 +54,6 @@
     "separate-outputs": true
   },
 
-  // ML4W Welcome App
-  "custom/ml4w-welcome": {
-    "on-click": "flatpak run com.ml4w.sidebar",
-    "format": " ",
-    "tooltip-format": "Open ML4W Sidebar App"
-  },
-
   // Empty
   "custom/empty": {
     "format": ""
@@ -75,9 +68,9 @@
   // Cliphist
   "custom/cliphist": {
     "format": "",
-    "on-click": "sleep 0.1 && ~/.config/ml4w/scripts/cliphist.sh",
-    "on-click-right": "sleep 0.1 && ~/.config/ml4w/scripts/cliphist.sh d",
-    "on-click-middle": "sleep 0.1 && ~/.config/ml4w/scripts/cliphist.sh w",
+    "on-click": "sleep 0.1 && ~/.config/juan/scripts/cliphist.sh",
+    "on-click-right": "sleep 0.1 && ~/.config/juan/scripts/cliphist.sh d",
+    "on-click-middle": "sleep 0.1 && ~/.config/juan/scripts/cliphist.sh w",
     "tooltip-format": "Left: Open clipboard Manager\nRight: Delete an entry\nMiddle: Clear list"
   },
 
@@ -86,12 +79,12 @@
     "format": "  {}",
     "escape": true,
     "return-type": "json",
-    "exec": "~/.config/ml4w/scripts/updates.sh",
+    "exec": "~/.config/juan/scripts/updates.sh",
     "interval": 1800,
     "signal": 1,
     "hide-empty-text": true,
-    "on-click": "~/.config/ml4w/settings/installupdates.sh",
-    "on-click-right": "~/.config/ml4w/settings/software.sh"
+    "on-click": "~/.config/juan/settings/installupdates.sh",
+    "on-click-right": "~/.config/juan/settings/software.sh"
   },
 
   // Wallpaper
@@ -107,13 +100,6 @@
     "format": "",
     "on-click": "~/.config/waybar/themeswitcher.sh",
     "tooltip-format": "Select a waybar theme"
-  },
-
-  // Settings
-  "custom/settings": {
-    "format": "",
-    "on-click": "sleep 0.1 && com.ml4w.dotfilessettings",
-    "tooltip-format": "ML4W Dotfiles Settings"
   },
 
   // Keybindings
@@ -133,7 +119,7 @@
   // Windows VM
   "custom/windowsvm": {
     "format": "",
-    "on-click": "~/.config/ml4w/scripts/launchvm.sh",
+    "on-click": "~/.config/juan/scripts/launchvm.sh",
     "tooltip": false
   },
 
@@ -158,7 +144,7 @@
   // Power Menu
   "custom/exit": {
     "format": "",
-    "on-click": "~/.config/ml4w/scripts/wlogout.sh",
+    "on-click": "~/.config/juan/scripts/wlogout.sh",
     "on-click-right": "hyprlock",
     "tooltip-format": "Left: Power menu\nRight: Lock screen"
   },
@@ -219,8 +205,7 @@
 
   // Clock
   "clock": {
-    "format": "{:%H:%M %a}",
-    "on-click": "flatpak run com.ml4w.calendar",
+    "format": "{:%A %m %d, %Y | %I:%M %p %Z}",
     "timezone": "",
     "tooltip": false
   },
@@ -234,13 +219,13 @@
   // CPU
   "cpu": {
     "format": "/ C {usage}% ",
-    "on-click": "~/.config/ml4w/settings/system-monitor.sh"
+    "on-click": "~/.config/juan/settings/system-monitor.sh"
   },
 
   // Memory
   "memory": {
     "format": "/ M {}% ",
-    "on-click": "~/.config/ml4w/settings/system-monitor.sh"
+    "on-click": "~/.config/juan/settings/system-monitor.sh"
   },
 
   // Harddisc space used
@@ -248,7 +233,7 @@
     "interval": 30,
     "format": "D {percentage_used}% ",
     "path": "/",
-    "on-click": "~/.config/ml4w/settings/system-monitor.sh"
+    "on-click": "~/.config/juan/settings/system-monitor.sh"
   },
 
   "hyprland/language": {
@@ -286,7 +271,6 @@
   "group/links": {
     "orientation": "horizontal",
     "modules": [
-      "custom/chatgpt",
       "custom/empty"
     ]
   },
@@ -317,8 +301,8 @@
     "tooltip-format-ethernet": " {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}",
     "tooltip-format-disconnected": "Disconnected",
     "max-length": 50,
-    "on-click": "~/.config/ml4w/settings/networkmanager.sh",
-    "on-click-right": "~/.config/ml4w/scripts/nm-applet.sh toggle",
+    "on-click": "~/.config/juan/settings/networkmanager.sh",
+    "on-click-right": "~/.config/juan/scripts/nm-applet.sh toggle",
   },
 
   // Battery

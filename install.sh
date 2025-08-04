@@ -12,11 +12,37 @@ if ! command -v yay &> /dev/null; then
 fi
 
 apps=(
+    lua-language-server
+    gopls
+    nerd-fonts
+    fastfetch
+    gtk3
+    gtk4
+    gtk-layer-shell
+    nwg-drawer
+    nwg-displays
+    gnome-themes-extra
+    adwaita-icon-theme
+    lxappearance
+    qt6ct
+    qt6-base
+    qt6-svg
+    xsettingsd
+    imagemagick
+    jq
+    fzf
+    python-pywal
+    python-imageio
+    python-gobject
+    ripgrep
+    hyprpaper
+    rofi
     kitty
     wofi
     grim
     slurp
     xdg-desktop-portal-hyprland
+    xdg-desktop-portal-wlr
     xdg-desktop-portal-gtk
     noto-fonts
     noto-fonts-emoji
@@ -36,11 +62,60 @@ for pkg in "${apps[@]}"; do
     fi
 done
 
+aur_packages=(
+    wlogout
+    swaync
+    nwg-dock-hyprland
+    wallust
+    matugen
+    waypaper
+    eza
+    oh-my-posh
+    )
+
+for pkg in "${aur_packages[@]}"; do 
+    echo " - Installing $pkg..."
+    yay -S --noconfirm --needed "$pkg"
+done
+
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    RUNZSH=no CHSH=no KEEP_ZSH=yes \
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+else
+    echo "Oh My Zsh already installed"
+fi
+
+ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
+
+install_zsh_plugin() {
+    local repo_url="$1"
+    local plugin_name="$2"
+    local plugin_path="$ZSH_CUSTOM/plugins/$plugin_name"
+
+    if [ ! -d "$plugin_path" ]; then
+        echo "Installing $plugin_name..."
+        git clone "$repo_url" "$plugin_path"
+    else
+        echo "$plugin_name already installed at $plugin_path"
+    fi
+}
+
+install_zsh_plugin https://github.com/zsh-users/zsh-autosuggestions zsh-autosuggestions
+install_zsh_plugin https://github.com/zsh-users/zsh-syntax-highlighting zsh-syntax-highlighting
+
+
 echo "[+] Symlinking config files..."
-ln -sf ~/.dotfiles/.config/nvim ~/.config/nvim
-ln -sf ~/.dotfiles/.config/hypr ~/.config/hypr
-ln -sf ~/.dotfiles/.config/waybar ~/.config/waybar
-# repeat for hyprland, waybar, etc.
+for dir in "$HOME/.dotfiles/.config/"*; do 
+    name=$(basename "$dir")
+    target="$HOME/.config/$name"
+
+    [ -e "$target" ] && rm -rf "$target"
+    ln -sf "$dir" "$target"
+    echo " - Linked $name"
+done
+
+cp -f "$HOME/.dotfiles/.zshrc" "$HOME/.zshrc"
+cp -f "$HOME/.dotfiles/.bashrc" "$HOME/.bashrc"
 
 echo "[+] Enabling services..."
 SERVICES=(bluetooth NetworkManager)
