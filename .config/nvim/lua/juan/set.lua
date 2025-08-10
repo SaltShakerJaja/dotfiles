@@ -9,4 +9,4 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 vim.opt.wrap = false
 vim.opt.incsearch = true
-vim.termguicolors = true
+vim.opt.termguicolors = true

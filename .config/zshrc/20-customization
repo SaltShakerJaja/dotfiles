@@ -1,7 +1,6 @@
 # Customization
 
 POSH=agnoster
-ZSH_THEME=robbyrussell
 
 plugins=(
     git
@@ -24,4 +23,5 @@ HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory
 
-eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
+#eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
+eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/EDM115-newline.omp.json)"

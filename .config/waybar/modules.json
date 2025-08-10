@@ -205,7 +205,7 @@
 
   // Clock
   "clock": {
-    "format": "{:%A %m %d, %Y | %I:%M %p %Z}",
+    "format": "{:%A %b %d, %Y | %I:%M %p %Z}",
     "timezone": "",
     "tooltip": false
   },

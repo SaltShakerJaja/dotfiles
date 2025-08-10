@@ -42,7 +42,7 @@ threshhold_red=100
 
 # Arch
 if [[ $(_checkCommandExists "pacman") == 0 ]]; then
-    aur_helper="$(cat ~/.config/ml4w/settings/aur.sh)"
+    aur_helper="$(cat ~/.config/juan/settings/aur.sh)"
 
     check_lock_files() {
         local pacman_lock="/var/lib/pacman/db.lck"

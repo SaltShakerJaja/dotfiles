@@ -1,8 +1,8 @@
 #!/bin/bash
 
-ml4w_cache_folder="$HOME/.cache/ml4w/hyprland-dotfiles"
+cache_folder="$HOME/.cache/juan/hyprland-dotfiles"
 
-generated_versions="$ml4w_cache_folder/wallpaper-generated"
+generated_versions="$cache_folder/wallpaper-generated"
 
 rm $generated_versions/*
 echo ":: Wallpaper cache cleared"

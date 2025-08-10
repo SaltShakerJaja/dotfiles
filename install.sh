@@ -12,8 +12,16 @@ if ! command -v yay &> /dev/null; then
 fi
 
 apps=(
+    wget
+    curl
+    unzip
+    rsync
+    flatpak
+    git
     lua-language-server
     gopls
+    power-profiles-daemon
+    wl-clipboard
     nerd-fonts
     fastfetch
     gtk3
@@ -36,14 +44,25 @@ apps=(
     python-gobject
     ripgrep
     hyprpaper
-    rofi
+    rofi-wayland
+    nwg-look
+    pavucontrol
+    htop
+    slurp
     kitty
     wofi
     grim
-    slurp
+    cliphist
     xdg-desktop-portal-hyprland
     xdg-desktop-portal-wlr
     xdg-desktop-portal-gtk
+    xdg-user-dirs
+    brightnessctl
+    gvfs
+    ttf-roboto
+    ttf-fira-sans
+    ttf-font-awesome
+    otf-font-awesome
     noto-fonts
     noto-fonts-emoji
     ttf-jetbrains-mono
@@ -51,6 +70,11 @@ apps=(
     bluez-utils
     blueman
     networkmanager
+    hyprpaper
+    hyprlock
+    hypridle
+    hyprpicker
+    vlc
     )
 
 for pkg in "${apps[@]}"; do 
@@ -86,6 +110,10 @@ else
 fi
 
 ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
+
+[ -d $HOME/.local/bin ] || mkdir -p $HOME/.local/bin
+cp /usr/bin/wallust $HOME/.local/bin/
+cp /usr/bin/matugen $HOME/.local/bin/
 
 install_zsh_plugin() {
     local repo_url="$1"
@@ -123,6 +151,9 @@ for svc in "${SERVICES[@]}"; do
     sudo systemctl enable "$svc.service"
     sudo systemctl start "$svc.service"
 done
+
+find ~/.config/juan/settings -type f -name "*.sh" -exec chmod +x {} +
+sudo usermod -aG wheel,audio,video,input,network,lp,power,kvm juan 
 
 echo "[+] Setting zsh as default shell..."
 chsh -s /bin/zsh
